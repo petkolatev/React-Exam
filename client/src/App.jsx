@@ -8,7 +8,8 @@ import Catalog from '../components/catalog/Catalog'
 import CreateBook from '../components/createBook/CreateBook'
 import Register from '../components/register/Register'
 import Login from '../components/login/Login'
-// import SingleBook from '../components/SingleBook'
+import BookInfo from '../components/bookInfo/BookInfo'
+
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/create' element={<CreateBook />} />
-        {/* <Route path='/catalog/:bookId' element={<SingleBook />} /> */}
+        <Route path='/catalog/:bookId' element={<BookInfo/>} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
