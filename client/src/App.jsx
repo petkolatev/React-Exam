@@ -6,7 +6,7 @@ import './App.css'
 import Home from '../components/home/Home'
 import Catalog from '../components/catalog/Catalog'
 import CreateBook from '../components/createBook/CreateBook'
-// import Register from '../components/Register'
+import Register from '../components/register/Register'
 import Login from '../components/login/Login'
 // import SingleBook from '../components/SingleBook'
 
@@ -22,7 +22,7 @@ function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/create' element={<CreateBook />} />
         {/* <Route path='/catalog/:bookId' element={<SingleBook />} /> */}
-        {/* <Route path='/register' element={<Register />} /> */}
+        <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
       </Routes>
 
