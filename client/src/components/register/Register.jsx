@@ -11,8 +11,6 @@ export default function Register() {
         const data = Object.fromEntries(userData)
 
         if (password !== rePassword) {
-            initialValues.username = data.username
-            console.log(initialValues.username);
             return (`Repassword missmatch`)
         }
 
@@ -23,6 +21,7 @@ export default function Register() {
             },
             body: JSON.stringify(data),
         })
+        console.log(data);
     }
 
     return (
