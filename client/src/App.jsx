@@ -3,9 +3,8 @@ import { Routes, Route } from 'react-router'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import './App.css'
-// import '../components/CreateBook.css'
 // import Home from '../components/Home'
-// import Catalog from '../components/Catalog'
+import Catalog from '../components/catalog/Catalog'
 // import CreateBook from '../components/CreateBook'
 // import Register from '../components/Register'
 // import Login from '../components/Login'
@@ -19,8 +18,8 @@ function App() {
     <>
       <Header />
       <Routes>
-        {/* <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
+        {/* <Route path='/' element={<Home />} />
         <Route path='/catalog/:bookId' element={<SingleBook />} />
         <Route path='/create' element={<CreateBook />} />
         <Route path='/register' element={<Register />} />
