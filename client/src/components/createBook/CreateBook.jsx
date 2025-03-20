@@ -1,16 +1,22 @@
+import { useContext } from 'react'
+import { UserContex } from '../contexts/UserContex'
 import './createBook.css'
 
 export default function CreateBook() {
+    const authData = useContext(UserContex)
+    const owner = authData._id
+
     const createBookHandler = async (bookData) => {
-        const data = Object.fromEntries(bookData)
-       const response = await fetch('http://localhost:3000/api/book', {
+        const { title, author, genre, year, description, image } = Object.fromEntries(bookData)
+        const payload = { title, author, genre, year, description, image, owner }
+        const response = await fetch('http://localhost:3000/api/book', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(payload)
         })
-        console.log(response);
+        console.log(payload);
     }
     return (
         <div className="form-container" >

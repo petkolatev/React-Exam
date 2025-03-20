@@ -3,7 +3,7 @@ import './login.css'
 import { useContext } from 'react'
 import { UserContex } from '../contexts/UserContex'
 
-export default function Login() {
+export default function Login({onLogin}) {
     const navigate = useNavigate()
     const { userLoginHandler } = useContext(UserContex)
 
@@ -19,8 +19,7 @@ export default function Login() {
             body: JSON.stringify(data),
         })
         const result = await response.json()
-        userLoginHandler(result)
-        console.log(authData);
+        onLogin(result)
         navigate('/catalog')
     }
 

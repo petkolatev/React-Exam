@@ -15,16 +15,16 @@ import { UserContex } from './components/contexts/UserContex'
 
 
 function App() {
-  const [authData, setAuthData] = useState({})
+  const [authData, setAuthData] = useState(UserContex)
  
-
   const userLoginHandler = (resultData)=>{
-    setAuthData(resultData)
+    setAuthData(resultData.user)
     console.log(authData);
   }
 
 
   return (
+    <UserContex.Provider value={{...authData}}>
     <>
       <Header />
       <Routes>
@@ -33,12 +33,13 @@ function App() {
         <Route path='/create' element={<CreateBook />} />
         <Route path='/catalog/:bookId' element={<BookInfo/>} />
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login onLogin={userLoginHandler}/>} />
       </Routes>
 
 
       <Footer />
     </>
+    </UserContex.Provider>
   )
 }
 
