@@ -12,7 +12,7 @@ export const useBooks = () => {
     return { books };
 }
 
-export const useBook = (bookId)=>{
+export const useBook = (bookId) => {
     const [book, setBook] = useState({})
 
     useEffect(() => {
@@ -21,5 +21,18 @@ export const useBook = (bookId)=>{
             .then(setBook)
     }, [bookId])
 
-    return {book}
+    return { book }
+}
+
+export const useCreateBook = () => {
+    const create = (bookData) => {
+        const response = fetch('http://localhost:3000/api/book', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookData)
+        })
+    }
+    return { create }
 }
