@@ -1,19 +1,10 @@
-import { useEffect, useState } from "react"
-
 
 import '../catalog/catalog.css'
 import BookItem from "../bookItem/BookItem"
+import { useBooks } from "../../api/bookApi"
 
 export default function Catalog() {
-    const [books, setBooks] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:3000/api/book')
-            .then(res => res.json())
-            .then(result => {
-                setBooks(result);
-            })
-    },[])
+    const { books } = useBooks()
 
     const style1 = {
         marginLeft: '10px'
@@ -25,7 +16,7 @@ export default function Catalog() {
             <div className="catalog section">
 
                 {books.map((book) =>
-                   <BookItem key={book._id} book={book} />
+                    <BookItem key={book._id} book={book} />
                 )}
             </div>
         </>
