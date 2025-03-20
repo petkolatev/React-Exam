@@ -6,9 +6,6 @@ import { useBooks } from "../../api/bookApi"
 export default function Catalog() {
     const { books } = useBooks()
 
-    const style1 = {
-        marginLeft: '10px'
-    }
     return (
         <>
             <h2>Каталог на Продукти</h2>

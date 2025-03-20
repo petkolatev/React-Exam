@@ -1,19 +1,10 @@
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import './bookInfo.css'
+import { useBook } from '../../api/bookApi'
 
 export default function BookInfo() {
     const { bookId } = useParams()
-    const [book, setBook] = useState({})
-
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/book/${bookId}`)
-            .then(res => res.json())
-            .then(result => {
-                setBook(result)
-               
-            })
-    }, [bookId])
+    const { book } = useBook(bookId)
 
     return (
         <div className="book-container">
