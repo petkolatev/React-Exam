@@ -11,6 +11,7 @@ import Login from './components/login/Login'
 import BookInfo from './components/bookInfo/BookInfo'
 import { useState } from 'react'
 import { UserContex } from './components/contexts/UserContex'
+import EditBook from './components/createBook/EditBook'
 
 
 
@@ -27,11 +28,13 @@ function App() {
     <UserContex.Provider value={{...authData}}>
     <>
       <Header />
+      
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/create' element={<CreateBook />} />
         <Route path='/catalog/:bookId' element={<BookInfo/>} />
+        <Route path='/catalog/:bookId/edit' element={<EditBook/>} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login onLogin={userLoginHandler}/>} />
       </Routes>

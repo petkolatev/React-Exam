@@ -26,7 +26,7 @@ export const useBook = (bookId) => {
 
 export const useCreateBook = () => {
     const create = (bookData) => {
-        const response = fetch('http://localhost:3000/api/book', {
+        fetch('http://localhost:3000/api/book', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,4 +35,26 @@ export const useCreateBook = () => {
         })
     }
     return { create }
+}
+
+export const useEditBook = () => {
+    const edit = (bookId, bookData) => {
+        fetch(`http://localhost:3000/api/book/${bookId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(bookData)
+        })
+    }
+    return { edit }
+}
+
+export const useDeleteBook = () => {
+    const deleteBook = (bookId) => {
+        fetch(`http://localhost:3000/api/book/${bookId}`, {
+            method: 'DELETE'
+        })
+    }
+    return { deleteBook }
 }
