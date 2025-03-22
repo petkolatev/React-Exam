@@ -1,25 +1,20 @@
 import { useNavigate } from 'react-router'
 import './login.css'
-import { useContext } from 'react'
-import { UserContex } from '../contexts/UserContex'
+import { useLogin } from '../../api/authApi'
 
-export default function Login({onLogin}) {
+
+
+export default function Login({ onLogin }) {
     const navigate = useNavigate()
-    const { userLoginHandler } = useContext(UserContex)
+    const { login } = useLogin()
 
 
     const loginHeandler = async (loginData) => {
         const data = Object.fromEntries(loginData)
+        const { email, password } = data
 
-        const response = await fetch('http://localhost:3000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        const result = await response.json()
-        onLogin(result)
+        const authData = await login(email,password)
+        onLogin(authData)
         navigate('/catalog')
     }
 
