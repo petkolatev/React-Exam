@@ -1,27 +1,26 @@
 
+import { useNavigate } from 'react-router'
 import './register.css'
+import { useRegister } from '../../api/authApi'
 
 const initialValues = { username: '', email: '', password: '', rePassword: '' }
 
 export default function Register() {
-
+    const navigate = useNavigate()
+    const { register } = useRegister()
     const registerHandler = async (userData) => {
-
-        const { password, rePassword } = Object.fromEntries(userData)
         const data = Object.fromEntries(userData)
+
+        const { password, rePassword } = data
 
         if (password !== rePassword) {
             return (`Repassword missmatch`)
         }
 
-        const response = await fetch('http://localhost:3000/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        })
-        console.log(data);
+        await register(data)
+
+
+        navigate('/login')
     }
 
     return (

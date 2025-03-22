@@ -19,6 +19,15 @@ export const useLogin = () => {
     }
 }
 
+export const useRegister = () => {
+    const register = async (data) =>
+        await request.post(`${baseUrl}/register`, data)
+
+    return {
+        register
+    }
+}
+
 export const useLogout = () => {
     const { token, userLogoutHandler } = useContext(UserContex);
 
