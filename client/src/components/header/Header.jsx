@@ -25,7 +25,7 @@ export default function Header() {
                 <nav>
                     <Link key='Начало' to='/' >Начало</Link>
                     <Link key='Каталог с книги' to='/catalog' >Каталог с книги</Link>
-                    <Link key='Търсене' to='#' >Търсене</Link>
+                    <Link key='Търсене' to='/search' >Търсене</Link>
                     {token
                         ? (
 

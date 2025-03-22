@@ -9,13 +9,11 @@ import CreateBook from './components/createBook/CreateBook'
 import Register from './components/register/Register'
 import Login from './components/login/Login'
 import BookInfo from './components/bookInfo/BookInfo'
-
-import { UserContex } from './components/contexts/UserContex'
 import EditBook from './components/createBook/EditBook'
-import usePersistedState from './hooks/usePersistedState'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProviders'
 import UserProfile from './components/userProfile/UserProfile'
+import Search from './components/search/Search'
 
 
 
@@ -36,6 +34,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/profile/:userId' element={<UserProfile />} />
+        <Route path='/search' element={<Search />} />
       </Routes>
 
 
