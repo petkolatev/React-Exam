@@ -9,18 +9,19 @@ import CreateBook from './components/createBook/CreateBook'
 import Register from './components/register/Register'
 import Login from './components/login/Login'
 import BookInfo from './components/bookInfo/BookInfo'
-import { useState } from 'react'
+
 import { UserContex } from './components/contexts/UserContex'
 import EditBook from './components/createBook/EditBook'
+import usePersistedState from './hooks/usePersistedState'
 
 
 
 function App() {
-  const [authData, setAuthData] = useState(UserContex)
+  const [authData, setAuthData] = usePersistedState({})
  
   const userLoginHandler = (resultData)=>{
-    setAuthData(resultData.user)
-    console.log(authData);
+    setAuthData(resultData)
+   
   }
 
 

@@ -13,7 +13,7 @@ const navigation = [
     { name: 'Регистрация', path: '/register' },
 ]
 export default function Header() {
-    const { email } = useContext(UserContex)
+    const { token,user } = useContext(UserContex)
 
     return (
         <>
@@ -26,14 +26,13 @@ export default function Header() {
                     <Link key='Начало' to='/' >Начало</Link>
                     <Link key='Каталог с книги' to='/catalog' >Каталог с книги</Link>
                     <Link key='Търсене' to='#' >Търсене</Link>
-                    {email
+                    {token
                         ? (
 
                             <>
                                 <Link key='Добави' to='/create' >Добави</Link>
                                 <Link key='Излез' to='#' >Излез</Link>
-                                <Link key='Профил' to='#' >Профил</Link>
-                                <Link  >{email}</Link>
+                                <Link key='Профил' to='#' >{`${user.username}'s`}</Link>
                             </>
                         )
                         : (
