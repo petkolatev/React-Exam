@@ -32,7 +32,7 @@ export default function Header() {
                             <>
                                 <Link key='Добави' to='/create' >Добави</Link>
                                 <Link key='Излез' to='/logout' >Излез</Link>
-                                <Link key='Профил' to='#' >{`${user.username}'s профил`}</Link>
+                                <Link key='Профил' to={`/profile/${user?._id}`} >{`${user?.username}'s профил`}</Link>
                             </>
                         )
                         : (

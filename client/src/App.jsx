@@ -15,6 +15,7 @@ import EditBook from './components/createBook/EditBook'
 import usePersistedState from './hooks/usePersistedState'
 import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProviders'
+import UserProfile from './components/userProfile/UserProfile'
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
         <Route path='/logout' element={<Logout />} />
+        <Route path='/profile/:userId' element={<UserProfile />} />
       </Routes>
 
 

@@ -6,6 +6,8 @@ import { UserContex } from '../components/contexts/UserContex'
 const baseUrl = 'http://localhost:3000/api';
 
 export const useLogin = () => {
+
+
     const login = async (email, password) => {
         return await request.post(
             `${baseUrl}/login`,
@@ -26,6 +28,15 @@ export const useRegister = () => {
     return {
         register
     }
+}
+
+export const useUpdateProfile = () => {
+    const { user } = useContext(UserContex)
+    const update = async (data) => {
+        return await request.put(`${baseUrl}/profile/${user._id}`, { ...data })
+    }
+
+    return { update }
 }
 
 export const useLogout = () => {

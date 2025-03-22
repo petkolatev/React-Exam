@@ -15,8 +15,12 @@ export default function UserProvider({
         setAuthData({});
     }
 
-    return(
-        <UserContex.Provider value={{...authData,userLoginHandler,userLogoutHandler}}>
+    const userUpdate = (data) => {
+      setAuthData(data)
+    }
+
+    return (
+        <UserContex.Provider value={{ ...authData, userLoginHandler, userLogoutHandler, userUpdate }}>
             {children}
         </UserContex.Provider>
     )
