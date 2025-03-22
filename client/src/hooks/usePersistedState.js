@@ -8,7 +8,6 @@ export default function usePersistedState( initialState) {
         }
 
         const persistedStateData = JSON.parse(persistedState)
-        console.log(persistedStateData);
         return persistedStateData
     })
 

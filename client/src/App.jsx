@@ -13,20 +13,15 @@ import BookInfo from './components/bookInfo/BookInfo'
 import { UserContex } from './components/contexts/UserContex'
 import EditBook from './components/createBook/EditBook'
 import usePersistedState from './hooks/usePersistedState'
+import Logout from './components/logout/Logout'
+import UserProvider from './providers/UserProviders'
 
 
 
 function App() {
-  const [authData, setAuthData] = usePersistedState({})
- 
-  const userLoginHandler = (resultData)=>{
-    setAuthData(resultData)
-   
-  }
-
 
   return (
-    <UserContex.Provider value={{...authData}}>
+    <UserProvider>
     <>
       <Header />
       
@@ -37,13 +32,14 @@ function App() {
         <Route path='/catalog/:bookId' element={<BookInfo/>} />
         <Route path='/catalog/:bookId/edit' element={<EditBook/>} />
         <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login onLogin={userLoginHandler}/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
       </Routes>
 
 
       <Footer />
     </>
-    </UserContex.Provider>
+    </UserProvider>
   )
 }
 

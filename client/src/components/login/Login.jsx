@@ -1,11 +1,14 @@
 import { useNavigate } from 'react-router'
 import './login.css'
 import { useLogin } from '../../api/authApi'
+import { useContext } from 'react'
+import { UserContex } from '../contexts/UserContex'
 
 
 
-export default function Login({ onLogin }) {
+export default function Login() {
     const navigate = useNavigate()
+    const { userLoginHandler } = useContext(UserContex)
     const { login } = useLogin()
 
 
@@ -13,8 +16,8 @@ export default function Login({ onLogin }) {
         const data = Object.fromEntries(loginData)
         const { email, password } = data
 
-        const authData = await login(email,password)
-        onLogin(authData)
+        const authData = await login(email, password)
+        userLoginHandler(authData)
         navigate('/catalog')
     }
 

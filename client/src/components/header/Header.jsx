@@ -13,7 +13,7 @@ const navigation = [
     { name: 'Регистрация', path: '/register' },
 ]
 export default function Header() {
-    const { token,user } = useContext(UserContex)
+    const { token, user } = useContext(UserContex)
 
     return (
         <>
@@ -31,8 +31,8 @@ export default function Header() {
 
                             <>
                                 <Link key='Добави' to='/create' >Добави</Link>
-                                <Link key='Излез' to='#' >Излез</Link>
-                                <Link key='Профил' to='#' >{`${user.username}'s`}</Link>
+                                <Link key='Излез' to='/logout' >Излез</Link>
+                                <Link key='Профил' to='#' >{`${user.username}'s профил`}</Link>
                             </>
                         )
                         : (
