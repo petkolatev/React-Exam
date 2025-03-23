@@ -7,12 +7,13 @@ import { useCreateBook } from '../../api/bookApi'
 export default function CreateBook() {
     const navigate = useNavigate()
     const authData = useContext(UserContex)
-    const owner = authData._id
+    const owner = authData.user._id
     const { create } = useCreateBook()
 
     const createBookHandler = async (bookData) => {
         const { title, author, genre, year, description, image } = Object.fromEntries(bookData)
         const payload = { title, author, genre, year, description, image, owner }
+
         await create(payload)
         navigate('/catalog')
     }

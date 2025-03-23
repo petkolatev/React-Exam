@@ -35,15 +35,13 @@ function App() {
             <Route path='/catalog/:bookId/edit' element={<EditBook />} />
             <Route path='/create' element={<CreateBook />} />
             <Route path='/logout' element={<Logout />} />
+            <Route path='/profile/:userId' element={<UserProfile />} />
           </Route>
           <Route element={<GuestGuard />}>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/profile/:userId' element={<UserProfile />} />
-
           </Route>
         </Routes>
-
 
         <Footer />
       </>
