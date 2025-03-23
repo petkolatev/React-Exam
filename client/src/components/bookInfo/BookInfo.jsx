@@ -6,6 +6,7 @@ import { UserContex } from '../contexts/UserContex'
 import UseAuth from '../../hooks/useAuth'
 
 export default function BookInfo() {
+
     const navigate = useNavigate()
     const { isAuthenticated } = UseAuth()
     const authData = useContext(UserContex)
@@ -25,21 +26,17 @@ export default function BookInfo() {
     }
     let isLiked = Boolean
     let isOwner = Boolean
-    let likeHandler =''
+    let likeHandler = ''
 
     if (isAuthenticated) {
-
-
-        if (likes) {
-            isLiked = likes.includes(authData.user._id)
-        }
-
-
-         likeHandler = async () => {
-            await like(bookId, book, authData.user?._id)
-        }
-
         isOwner = book.owner === authData.user._id
+        isLiked = likes?.includes(authData.user._id)
+
+        likeHandler = async () => {
+            await like(bookId, book, authData.user?._id)
+          
+        }
+
     }
 
     return (

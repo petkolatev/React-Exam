@@ -4,10 +4,10 @@ import { useBook, useEditBook } from "../../api/bookApi"
 export default function EditBook() {
     const navigate = useNavigate()
     const { bookId } = useParams()
-    // const authData = useContext(UserContex)
+
     const { book } = useBook(bookId)
     const { edit } = useEditBook()
-    // const owner = authData._id
+
 
     const editBookHandler =async (formData) => {
         const bookData = Object.fromEntries(formData)

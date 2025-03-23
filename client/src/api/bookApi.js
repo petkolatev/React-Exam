@@ -31,10 +31,11 @@ export const useBook = (bookId) => {
     let likes = book.likes
     useEffect(() => {
         fetch(`http://localhost:3000/api/book/${bookId}`)
-            .then(res => res.json())
-            .then(setBook)
+        .then(res => res.json())
+        .then(setBook)
     }, [bookId])
-
+    
+  
 
 
     return { book, likes }
@@ -67,13 +68,15 @@ export const useEditBook = () => {
 }
 
 export const useLikeBook = () => {
+   
     const like = (bookId, bookData, userId) => {
-        return fetch(`http://localhost:3000/api/book/${bookId}`, {
+         fetch(`http://localhost:3000/api/book/${bookId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ likes: [...bookData.likes, userId] })
+             
         })
     }
 
