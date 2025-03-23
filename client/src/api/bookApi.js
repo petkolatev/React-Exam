@@ -9,7 +9,21 @@ export const useBooks = () => {
             .then(setBooks)
     }, [])
 
+
     return { books };
+}
+
+export const useSearchBooks = () => {
+
+    const search = async (searchData) => {
+        return await fetch(`http://localhost:3000/api/book?title=${searchData}`)
+            .then(res => res.json())
+
+    }
+
+
+
+    return { search };
 }
 
 export const useBook = (bookId) => {

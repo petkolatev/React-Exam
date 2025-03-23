@@ -20,17 +20,6 @@ h1 {
     justify-content: space-around;
 }
 
-/* .product {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 10px;
-    width: 30%;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-} */
-
 .product img {
     max-width: 100%;
     border-radius: 4px;
