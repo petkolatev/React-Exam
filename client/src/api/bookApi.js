@@ -33,7 +33,7 @@ export const useBook = (bookId) => {
         fetch(`http://localhost:3000/api/book/${bookId}`)
             .then(res => res.json())
             .then(setBook)
-    }, [bookId, likes])
+    }, [bookId])
 
 
 

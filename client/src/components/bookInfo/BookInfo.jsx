@@ -25,6 +25,7 @@ export default function BookInfo() {
     }
     let isLiked = Boolean
     let isOwner = Boolean
+    let likeHandler =''
 
     if (isAuthenticated) {
 
@@ -34,7 +35,7 @@ export default function BookInfo() {
         }
 
 
-        const likeHandler = async () => {
+         likeHandler = async () => {
             await like(bookId, book, authData.user?._id)
         }
 
