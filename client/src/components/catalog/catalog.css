@@ -12,6 +12,10 @@
     justify-content: center;
 }
 
+.product a{
+    color: black;
+}
+
 .normal {
     text-decoration: none;
 }

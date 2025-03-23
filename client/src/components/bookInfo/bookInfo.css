@@ -1,3 +1,10 @@
 .book-container img {
     height: 600px;
 }
+
+
+button a{
+    color: aliceblue;
+    text-decoration: none;
+}
+

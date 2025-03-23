@@ -36,14 +36,14 @@ export default function BookInfo() {
             {isOwner && (
                 <>
                     <button onClick={deleteBookHandler}>Delete</button>
-                    <button ><Link to={`/catalog/${bookId}/edit`} >Edit</Link></button>
+                    <button className='info-btn'><Link to={`/catalog/${bookId}/edit`} >Edit</Link></button>
                 </>
 
             )}
               {!isOwner && (
                 <>
-                  <button >Like</button>
-                  <button >Buy</button>
+                  <button className='info-btn'>Like</button>
+                  <button className='info-btn'>Buy</button>
                 </>
             )}
         </div>
