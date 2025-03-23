@@ -20,7 +20,7 @@ h1 {
     justify-content: space-around;
 }
 
-.product {
+/* .product {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -29,7 +29,7 @@ h1 {
     width: 30%;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .product img {
     max-width: 100%;

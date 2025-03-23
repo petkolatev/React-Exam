@@ -14,6 +14,8 @@ import Logout from './components/logout/Logout'
 import UserProvider from './providers/UserProviders'
 import UserProfile from './components/userProfile/UserProfile'
 import Search from './components/search/Search'
+import AuthGuard from './components/guards/AuthGuard'
+import GuestGuard from './hooks/GuestGuard'
 
 
 
@@ -21,26 +23,31 @@ function App() {
 
   return (
     <UserProvider>
-    <>
-      <Header />
-      
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/catalog' element={<Catalog />} />
-        <Route path='/create' element={<CreateBook />} />
-        <Route path='/catalog/:bookId' element={<BookInfo/>} />
-        <Route path='/catalog/:bookId/edit' element={<EditBook/>} />
-        <Route path='/register' element={<Register />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/logout' element={<Logout />} />
-        <Route path='/profile/:userId' element={<UserProfile />} />
-        <Route path='/search' element={<Search />} />
-      </Routes>
+      <>
+        <Header />
+
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/catalog' element={<Catalog />} />
+          <Route path='/catalog/:bookId' element={<BookInfo />} />
+          <Route path='/search' element={<Search />} />
+          <Route element={<AuthGuard />}>
+            <Route path='/catalog/:bookId/edit' element={<EditBook />} />
+            <Route path='/create' element={<CreateBook />} />
+            <Route path='/logout' element={<Logout />} />
+          </Route>
+          <Route element={<GuestGuard />}>
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/profile/:userId' element={<UserProfile />} />
+
+          </Route>
+        </Routes>
 
 
-      <Footer />
-    </>
-    </UserProvider>
+        <Footer />
+      </>
+    </UserProvider >
   )
 }
 

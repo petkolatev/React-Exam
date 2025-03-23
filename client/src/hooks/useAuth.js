@@ -5,6 +5,7 @@ export default function UseAuth(){
     const authData = useContext(UserContex)
 
     return{
-        ...authData
+        ...authData,
+        isAuthenticated : !!authData.token,
     }
 }
