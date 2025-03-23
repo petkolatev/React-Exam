@@ -1,7 +1,7 @@
 import { useParams, useNavigate, Link } from 'react-router'
 import './bookInfo.css'
 import { useBook, useDeleteBook, useLikeBook } from '../../api/bookApi'
-import { useContext, } from 'react'
+import { useContext, useState, } from 'react'
 import { UserContex } from '../contexts/UserContex'
 import UseAuth from '../../hooks/useAuth'
 
@@ -14,6 +14,7 @@ export default function BookInfo() {
     const { book, likes } = useBook(bookId)
     const { deleteBook } = useDeleteBook()
     const { like } = useLikeBook()
+    const [state, setState] = useState(true)
 
     const deleteBookHandler = () => {
         const hasConfirm = confirm('Are you sure?')
@@ -33,8 +34,8 @@ export default function BookInfo() {
         isLiked = likes?.includes(authData.user._id)
 
         likeHandler = async () => {
+            setState(false)
             await like(bookId, book, authData.user?._id)
-          
         }
 
     }
@@ -57,7 +58,7 @@ export default function BookInfo() {
             )}
             {isAuthenticated && !isOwner && (
                 <>
-                    {!isLiked &&
+                    {!isLiked && state &&
                         <button className='info-btn' onClick={likeHandler}>Like</button>
                     }
                     <button className='info-btn'>Buy</button>
