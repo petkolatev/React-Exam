@@ -1,29 +1,45 @@
 import { useParams, useNavigate, Link } from 'react-router'
 import './bookInfo.css'
-import { useBook, useDeleteBook } from '../../api/bookApi'
-import { useContext } from 'react'
+import { useBook, useDeleteBook, useLikeBook } from '../../api/bookApi'
+import { useContext, } from 'react'
 import { UserContex } from '../contexts/UserContex'
+import UseAuth from '../../hooks/useAuth'
 
 export default function BookInfo() {
     const navigate = useNavigate()
+    const { isAuthenticated } = UseAuth()
     const authData = useContext(UserContex)
     const { bookId } = useParams()
-    const { book } = useBook(bookId)
+    const { book, likes } = useBook(bookId)
     const { deleteBook } = useDeleteBook()
+    const { like } = useLikeBook()
 
-
-    const deleteBookHandler = async () => {
+    const deleteBookHandler = () => {
         const hasConfirm = confirm('Are you sure?')
 
         if (!hasConfirm) {
             return
         }
-        await deleteBook(bookId)
+        deleteBook(bookId)
         navigate('/catalog')
     }
+    let isLiked = Boolean
+    let isOwner = Boolean
 
-    const isOwner = book.owner === authData.user._id
-    console.log(isOwner);
+    if (isAuthenticated) {
+
+
+        if (likes) {
+            isLiked = likes.includes(authData.user._id)
+        }
+
+
+        const likeHandler = async () => {
+            await like(bookId, book, authData.user?._id)
+        }
+
+        isOwner = book.owner === authData.user._id
+    }
 
     return (
         <div className="book-container">
@@ -33,19 +49,23 @@ export default function BookInfo() {
             <p><strong>Жанр:</strong> {book.genre}</p>
             <p><strong>Година:</strong>{book.year}</p>
             <p>{book.description}.</p>
-            {isOwner && (
+
+            {isAuthenticated && isOwner && (
                 <>
                     <button onClick={deleteBookHandler}>Delete</button>
                     <button className='info-btn'><Link to={`/catalog/${bookId}/edit`} >Edit</Link></button>
                 </>
 
             )}
-              {!isOwner && (
+            {isAuthenticated && !isOwner && (
                 <>
-                  <button className='info-btn'>Like</button>
-                  <button className='info-btn'>Buy</button>
+                    {!isLiked &&
+                        <button className='info-btn' onClick={likeHandler}>Like</button>
+                    }
+                    <button className='info-btn'>Buy</button>
                 </>
             )}
+
         </div>
 
     )

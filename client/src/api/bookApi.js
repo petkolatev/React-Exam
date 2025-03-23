@@ -28,14 +28,16 @@ export const useSearchBooks = () => {
 
 export const useBook = (bookId) => {
     const [book, setBook] = useState({})
-
+    let likes = book.likes
     useEffect(() => {
         fetch(`http://localhost:3000/api/book/${bookId}`)
             .then(res => res.json())
             .then(setBook)
-    }, [bookId])
+    }, [bookId, likes])
 
-    return { book }
+
+
+    return { book, likes }
 }
 
 export const useCreateBook = () => {
@@ -62,6 +64,20 @@ export const useEditBook = () => {
         })
     }
     return { edit }
+}
+
+export const useLikeBook = () => {
+    const like = (bookId, bookData, userId) => {
+        return fetch(`http://localhost:3000/api/book/${bookId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ likes: [...bookData.likes, userId] })
+        })
+    }
+
+    return { like }
 }
 
 export const useDeleteBook = () => {
