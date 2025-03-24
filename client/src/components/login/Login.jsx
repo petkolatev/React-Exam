@@ -17,7 +17,13 @@ export default function Login() {
         const { email, password } = data
 
         const authData = await login(email, password)
+
+        if (authData.error) {
+            return alert(authData.error)
+        }
         userLoginHandler(authData)
+
+
         navigate('/catalog')
     }
 
