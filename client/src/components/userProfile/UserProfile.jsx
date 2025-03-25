@@ -13,8 +13,6 @@ export default function UserProfile() {
     let newUpdatedData = { username: user?.username, email: user?.email, _id: user?._id }
     const filtredBooks = books.filter((book) => book.owner === user._id || book.likes.includes(user._id))
 
-    console.log(filtredBooks);
-
     const userUpdateProfile = async (userData) => {
         const data = Object.fromEntries(userData)
         const updatedData = await update(data)
@@ -38,7 +36,7 @@ export default function UserProfile() {
 
 
     return (
-        <>
+        <div >
             <div className="row">
                 <div className="column side">
                     <h2>Редактиране на профила</h2>
@@ -60,7 +58,7 @@ export default function UserProfile() {
                     <BookItem key={book._id} book={book} />
                 )}
             </div>
-        </>
+        </div>
     )
 
 }
