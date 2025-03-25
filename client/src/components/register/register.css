@@ -23,6 +23,10 @@
     border-radius: 4px;
 }
 
+.err{
+    color: red;
+}
+
 .register-form button {
     width: 100%;
     padding: 10px;
