@@ -61,7 +61,7 @@ export default function BookInfo() {
                     {!isLiked && state &&
                         <button className='info-btn' onClick={likeHandler}>Like</button>
                     }
-                    <button className='info-btn'>Buy</button>
+                    {/* <button className='info-btn'>Buy</button> */}
                 </>
             )}
 
