@@ -2,16 +2,6 @@ import { useContext } from 'react'
 import { Link } from 'react-router'
 import { UserContex } from '../contexts/UserContex'
 
-
-const navigation = [
-
-    { name: 'Търсене', path: '#' },
-    { name: 'Добави', path: '/create' },
-    { name: 'Излез', path: '#' },
-    { name: 'Профил', path: '#' },
-    { name: 'Вход', path: '/login' },
-    { name: 'Регистрация', path: '/register' },
-]
 export default function Header() {
     const { token, user } = useContext(UserContex)
 
