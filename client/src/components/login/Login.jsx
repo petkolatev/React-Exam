@@ -10,6 +10,7 @@ export default function Login() {
     const navigate = useNavigate()
     const { userLoginHandler } = useContext(UserContex)
     const { login } = useLogin()
+    const [err, setErr] = useState('')
 
 
     const loginHeandler = async (loginData) => {
@@ -19,7 +20,11 @@ export default function Login() {
         const authData = await login(email, password)
 
         if (authData.error) {
-            return alert(authData.error)
+            setErr(authData.error)
+            setTimeout(() => {
+                setErr('')
+            }, 5000)
+            return
         }
         userLoginHandler(authData)
 
@@ -38,6 +43,9 @@ export default function Login() {
                 <input type="email" id="email" name="email" />
                 <label htmlFor="password">Парола</label>
                 <input type="password" id="password" name="password" />
+                {err &&
+                    <p className='err'>{err}</p>
+                }
                 <button>Вход</button>
             </form>
         </div>
