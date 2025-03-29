@@ -22,8 +22,9 @@ export const useLogin = () => {
 }
 
 export const useRegister = () => {
-    const register = async (data) =>
-        await request.post(`${baseUrl}/register`, data)
+    const register = async (data) => {
+        return await request.post(`${baseUrl}/register`, data)
+    }
 
     return {
         register

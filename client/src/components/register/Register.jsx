@@ -45,8 +45,16 @@ export default function Register() {
         }
 
 
-        await register(data)
+        const result = await register(data)
 
+        if (result.error) {
+            setEmailErr(result.error)
+            setTimeout(() => {
+                setEmailErr('')
+            }, 5000)
+            return
+            
+        }
 
         navigate('/login')
     }
@@ -58,12 +66,12 @@ export default function Register() {
                 <label htmlFor="username">Потребителско име</label>
                 <input type="text" id="username" name="username" placeholder="username" defaultValue={input.username} required />
                 {usernameErr &&
-                    <p className='err'>Minimum length is 3 characters!</p>
+                    <p className='err'>{usernameErr}</p>
                 }
                 <label htmlFor="email">Имейл</label>
                 <input type="text" id="email" name="email" placeholder="JohnDoe@abv.bg" defaultValue={input.email} required />
                 {emailErr &&
-                    <p className='err'>Invalid email format!</p>
+                    <p className='err'>{emailErr}</p>
                 }
                 <label htmlFor="password">Парола</label>
                 <input type="password" id="password" name="password"
@@ -72,7 +80,7 @@ export default function Register() {
                 <label htmlFor="rePassword">Потвърди паролата</label>
                 <input type="password" id="rePassword" name="rePassword" placeholder="******" required />
                 {passErr &&
-                    <p className='err'>Repassword missmatch</p>
+                    <p className='err'>{passErr}</p>
                 }
                 <button >Регистрация</button>
             </form>
