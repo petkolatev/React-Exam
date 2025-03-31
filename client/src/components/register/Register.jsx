@@ -36,7 +36,7 @@ export default function Register() {
             return
         }
         if (password.length < 6) {
-            setPassErr('Minimum length is 6 characters!')
+            setPassErr('Password must be minimum 6 characters!')
             setTimeout(() => {
                 setPassErr('')
             }, 5000)
