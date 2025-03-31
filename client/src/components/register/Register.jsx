@@ -35,6 +35,13 @@ export default function Register() {
             }, 5000)
             return
         }
+        if (password.length < 6) {
+            setPassErr('Minimum length is 6 characters!')
+            setTimeout(() => {
+                setPassErr('')
+            }, 5000)
+            return
+        }
 
         if (password !== rePassword) {
             setPassErr('Repassword missmatch!')
@@ -53,7 +60,7 @@ export default function Register() {
                 setEmailErr('')
             }, 5000)
             return
-            
+
         }
 
         navigate('/login')
