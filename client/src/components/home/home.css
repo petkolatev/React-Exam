@@ -1,0 +1,28 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.column {
+    padding: 15px;
+}
+
+.column.side {
+    flex: 1;
+    background-color: #f1f1f1;
+}
+
+.column.middle {
+    flex: 2;
+    background-color: #ffffff;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+}
