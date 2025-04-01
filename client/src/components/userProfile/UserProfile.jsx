@@ -52,6 +52,7 @@ export default function UserProfile() {
                     </div>
                 </div>
             </div>
+            <h2>Харесани и добавени книги</h2>
             <div className="catalog section">
 
                 {filtredBooks.map((book) =>

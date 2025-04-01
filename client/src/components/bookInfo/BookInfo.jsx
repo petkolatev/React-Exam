@@ -36,6 +36,7 @@ export default function BookInfo() {
         likeHandler = async () => {
             setState(false)
             await like(bookId, book, authData.user?._id)
+            navigate(0)
         }
 
     }
@@ -48,6 +49,7 @@ export default function BookInfo() {
             <p><strong>Жанр:</strong> {book.genre}</p>
             <p><strong>Година:</strong>{book.year}</p>
             <p>{book.description}.</p>
+            <p><strong>Likes:</strong>{book.likes?.length}</p>
 
             {isAuthenticated && isOwner && (
                 <>
@@ -61,7 +63,6 @@ export default function BookInfo() {
                     {!isLiked && state &&
                         <button className='info-btn' onClick={likeHandler}>Like</button>
                     }
-                    {/* <button className='info-btn'>Buy</button> */}
                 </>
             )}
 
